@@ -41,7 +41,7 @@ int main() {
         mailman.sendMessage(message);
     }
 
-    cout<<"\nTo Quit the chat type: QUIT\n";
+    cout<<"\nQuit the chat type: QUIT\n";
     int i = 0;
     while (i < 6)
     {
