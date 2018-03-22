@@ -24,6 +24,7 @@
 class messageHandler
 {
 public:
+    messageHandler();
     int serverSetup();
     int clientSetup(std::string ipAddress);
     int sendMessage(std::string message);
@@ -36,7 +37,8 @@ private:
     int portNum;
     int client;
     struct sockaddr_in server_addr;
-    bool isServer;
+    bool isServer;//True = server, false = client.
+    bool typeAssigned;//Prevents user from running clientSetup then serverSetup.
 
     //Server stuff.
 

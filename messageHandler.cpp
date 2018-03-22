@@ -1,11 +1,24 @@
 //
-// Created by mike on 3/21/18.
+//  Message Handler: Sets up TCP for server/client. Then allows to send a
+//                   message and receive a message
+//  03/22/18
 //
 #include "messageHandler.h"
 
+messageHandler::messageHandler()
+{
+    typeAssigned = false;//Turns true in setup server/client.
+}
 
-//Sends a message. Checks if the class is a server or a client then sends the message.
-//TODO check that message isn't larger than bufsize, otherwise return -1.
+
+//****************************************************************************
+//  Sends a message: Checks if the class is a server or a client then sends
+//                   the message.
+//                   NOTE: Only change incorrect logic/syntax.
+//                         Do not add new features to function.
+//
+//  TODO check that message isn't larger than bufsize, otherwise return -1.
+//****************************************************************************
 int messageHandler::sendMessage (std::string message)
 {
     char buffer[bufsize];
@@ -30,8 +43,13 @@ int messageHandler::sendMessage (std::string message)
     return 1;
 }
 
-//Receive message. Checks if it's the server or client.
+//****************************************************************************
+//Receive message: Checks if it's the server or client.
+//                 NOTE: Only change incorrect logic/syntax. Do not add
+//                       new features to function.
+//
 //TODO check if received message was successful (Optional).
+//****************************************************************************
 std::string messageHandler::receiveMessage ()
 {
     char buffer[bufsize];
@@ -69,6 +87,14 @@ std::string messageHandler::receiveMessage ()
 //Sets up the server variables. Port can be changed from define in .h
 int messageHandler::serverSetup()
 {
+    //If the type has already been assigned return with error
+    if(typeAssigned)
+    {
+        std::cout<<"ERROR: type is already assigned\n";
+        return -1;
+    }
+    typeAssigned = true;
+
     char buffer[bufsize];
     isServer = true;
     portNum = PORT;
@@ -117,6 +143,14 @@ int messageHandler::serverSetup()
 //Sets up the client variables. Port can be changed from #define in .h
 int messageHandler::clientSetup(std::string ipAddress)
 {
+    //If the type has already been assigned return with error
+    if(typeAssigned)
+    {
+        std::cout<<"ERROR: type is already assigned\n";
+        return -1;
+    }
+    typeAssigned = true;
+
     char buffer[bufsize];
     isServer = false;
     portNum = PORT;
@@ -147,6 +181,7 @@ int messageHandler::clientSetup(std::string ipAddress)
     std::cout << "Init Recv: " << buffer;
     return 1;
 }
+
 
 
 
