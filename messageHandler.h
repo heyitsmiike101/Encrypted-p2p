@@ -7,7 +7,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include <stdlib.h>
+#include <cstdlib>
 #include <unistd.h>
 #include <netdb.h>
 
@@ -25,10 +25,12 @@ class messageHandler
 {
 public:
     messageHandler();
+    ~messageHandler();
     int serverSetup();
     int clientSetup(std::string ipAddress);
     int sendMessage(std::string message);
     std::string receiveMessage();
+
 
 
 
@@ -39,6 +41,7 @@ private:
     struct sockaddr_in server_addr;
     bool isServer;//True = server, false = client.
     bool typeAssigned;//Prevents user from running clientSetup then serverSetup.
+
 
     //Server stuff.
 

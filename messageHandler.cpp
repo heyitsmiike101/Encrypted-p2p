@@ -10,6 +10,17 @@ messageHandler::messageHandler()
     typeAssigned = false;//Turns true in setup server/client.
 }
 
+messageHandler::~messageHandler()
+{
+    if(isServer)
+    {
+        close(server);
+    }
+    std::cout << "\nConnection terminated\n";
+    close(client);
+}
+
+
 
 //****************************************************************************
 //  Sends a message: Checks if the class is a server or a client then sends
@@ -181,6 +192,7 @@ int messageHandler::clientSetup(std::string ipAddress)
     std::cout << "Init Recv: " << buffer;
     return 1;
 }
+
 
 
 
