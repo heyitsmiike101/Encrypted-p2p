@@ -26,6 +26,7 @@ int messageHandler::sendMessage (string message)
             << "program needs to terminate\n";
         return -1;
     }
+    return 1;
 }
 
 
@@ -86,7 +87,7 @@ int messageHandler::serverSetup()
     server_addr.sin_addr.s_addr = htons(INADDR_ANY);
     server_addr.sin_port = htons(portNum);
 
-    if ((bind(client, (struct sockaddr*)&server_addr,sizeof(server_addr))) < 0)
+    if ((::bind(client, (struct sockaddr*)&server_addr,sizeof(server_addr))) < 0)
     {
         cout << "Error binding connection. Port may be used" << endl;
         return -1;

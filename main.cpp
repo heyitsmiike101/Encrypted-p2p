@@ -47,7 +47,7 @@ int main() {
     {
 
         string recv = mailman.receiveMessage();
-        if(recv == "@$$")
+        if(recv == "QUIT")
         {
             exit(1);
         }
@@ -60,7 +60,7 @@ int main() {
         //cin.clear();
         if(send == "QUIT")
         {
-            mailman.sendMessage ("@$$");
+            mailman.sendMessage (send);
             exit(1);
         }
         mailman.sendMessage (send);
