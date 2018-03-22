@@ -18,16 +18,16 @@
 #define PORT 1050
 #define NOT !
 
-using namespace std;
+//using namespace std;
 
 
 class messageHandler
 {
 public:
     int serverSetup();
-    int clientSetup(string ipAddress);
-    int sendMessage(string message);
-    string receiveMessage();
+    int clientSetup(std::string ipAddress);
+    int sendMessage(std::string message);
+    std::string receiveMessage();
 
 
 

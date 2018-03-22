@@ -4,8 +4,9 @@
 #include "messageHandler.h"
 
 
-
-int messageHandler::sendMessage (string message)
+//Sends a message. Checks if the class is a server or a client then sends the message.
+//TODO check that message isn't larger than bufsize, otherwise return -1.
+int messageHandler::sendMessage (std::string message)
 {
     char buffer[bufsize];
     //Copy message to buffer.
@@ -22,15 +23,16 @@ int messageHandler::sendMessage (string message)
     }
     else
     {
-        cout<<"Invalid message handler, Neither server nor client.\n"
+        std::cout<<"Invalid message handler, Neither server nor client.\n"
             << "program needs to terminate\n";
         return -1;
     }
     return 1;
 }
 
-
-string messageHandler::receiveMessage ()
+//Receive message. Checks if it's the server or client.
+//TODO check if received message was successful (Optional).
+std::string messageHandler::receiveMessage ()
 {
     char buffer[bufsize];
 
@@ -45,19 +47,14 @@ string messageHandler::receiveMessage ()
     }
     else
     {
-        cout<<"Invalid message handler, Neither server nor client.\n"
+        std::cout<<"Invalid message handler, Neither server nor client.\n"
             << "program needs to terminate\n";
         return "None";
     }
 
-    string message = buffer;
+    std::string message = buffer;
     return message;
 }
-
-
-
-
-
 
 
 
@@ -69,6 +66,7 @@ string messageHandler::receiveMessage ()
 //****************************************************************************
 //****************************************************************************
 
+//Sets up the server variables. Port can be changed from define in .h
 int messageHandler::serverSetup()
 {
     char buffer[bufsize];
@@ -78,32 +76,32 @@ int messageHandler::serverSetup()
     client = socket(AF_INET, SOCK_STREAM, 0);
     if (client < 0)
     {
-        cout << "\nError establishing socket" << endl;
+        std::cout << "\nError establishing socket" << std::endl;
         return -1;
     }
-    cout << "Socket server created\n";
+    std::cout << "Socket server created\n";
 
     server_addr.sin_family = AF_INET;
     server_addr.sin_addr.s_addr = htons(INADDR_ANY);
     server_addr.sin_port = htons(portNum);
 
-    if ((::bind(client, (struct sockaddr*)&server_addr,sizeof(server_addr))) < 0)
+    if ((bind(client, (struct sockaddr*)&server_addr,sizeof(server_addr))) < 0)
     {
-        cout << "Error binding connection. Port may be used" << endl;
+        std::cout << "Error binding connection. Port may be used" << std::endl;
         return -1;
     }
 
     size = sizeof(server_addr);
-    cout << "Looking for client\n";
+    std::cout << "Looking for client\n";
 
     listen(client, 1);
 
     server = accept(client,(struct sockaddr *)&server_addr,&size);
     if (server < 0)
-        cout << " Error on accepting" << endl;
+        std::cout << " Error on accepting" << std::endl;
 
     strcpy(buffer, "Server connected!\n*********************");
-    cout<<"\nInit send: " << buffer;
+    std::cout<<"\nInit send: " << buffer;
     send(server, buffer, bufsize, 0);
     return 1;
 }
@@ -116,13 +114,14 @@ int messageHandler::serverSetup()
 //****************************************************************************
 //****************************************************************************
 
-int messageHandler::clientSetup(string ipAddress)
+//Sets up the client variables. Port can be changed from #define in .h
+int messageHandler::clientSetup(std::string ipAddress)
 {
     char buffer[bufsize];
     isServer = false;
     portNum = PORT;
 
-    //https://stackoverflow.com/questions/7352099/stdstring-to-char
+    //https://stackoverflow.com/questions/7352099/stdstring-to-char TODO maybe change this to a better way (may segfault)
     ip = new char[ipAddress.length() + 1];
     strcpy(ip, ipAddress.c_str());
 
@@ -130,10 +129,10 @@ int messageHandler::clientSetup(string ipAddress)
     client = socket(AF_INET, SOCK_STREAM, 0);
     if (client < 0)
     {
-        cout << "\nError establishing socket" << endl;
+        std::cout << "\nError establishing socket" << std::endl;
         return -1;
     }
-    cout << "Socket client created" << endl;
+    std::cout << "Socket client created" << std::endl;
 
     server_addr.sin_addr.s_addr = inet_addr(ip);
     server_addr.sin_family = AF_INET;
@@ -141,11 +140,11 @@ int messageHandler::clientSetup(string ipAddress)
 
     if (connect(client,(struct sockaddr *)&server_addr, sizeof(server_addr)) < 0)
     {
-        cout << "Connection to the server FAILED " << portNum << endl;
+        std::cout << "Connection to the server FAILED " << portNum << std::endl;
         return -1;
     }
     recv(client, buffer, bufsize, 0);
-    cout << "Init Recv: " << buffer;
+    std::cout << "Init Recv: " << buffer;
     return 1;
 }
 
