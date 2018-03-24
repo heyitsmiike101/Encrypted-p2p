@@ -1,11 +1,11 @@
 #include <iostream>
 #include "messageHandler.h"
-
+#include "test.h"
 
 using namespace std;
 
 int main() {
-
+    testdes(); return 0;
     messageHandler mailman;
     cout<<"Hello\n1 = server \n2 = client\n";
     string answer;
@@ -68,14 +68,5 @@ int main() {
 
     }
     cout<<endl<<endl<<endl;
-
-
-
-
-
-
-
-
-
     return 0;
 }
