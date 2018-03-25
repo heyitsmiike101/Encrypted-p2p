@@ -4,6 +4,7 @@
 //  03/22/18
 //
 #include "messageHandler.h"
+#include "messageEncryption.h"
 
 messageHandler::messageHandler()
 {
@@ -20,7 +21,51 @@ messageHandler::~messageHandler()
     close(client);
 }
 
+int messageHandler::setPassword (std::string password)
+{
+    if(password.length() > 7 || password.length() < 1)
+    {
+        std::cout << "Invalid password. try again \n must be between 1-7 characters\n";
+        return -1;
+    }
+    else
+    {
+        pass = new char[password.length() + 1];
+        strcpy(pass, password.c_str());
+    }
+}
 
+std::string messageHandler::encryptRecv ()
+{
+    //pass
+    string plaintext;
+    string ciphertext = receiveMessage ();
+
+//    std::cout << "MESSAGE: " + message << endl;
+//    std::cout << "ENCRYPTING..." << endl;
+//    ciphertext = encrypt_message(message, password);
+//    std::cout << "DECRYPTING..." << endl;
+
+    plaintext = decrypt_message(ciphertext, pass);
+
+    std::cout << "RESULTS: " + plaintext<<endl;
+//    std::cout << "CIPHER: " + ciphertext;
+
+    return plaintext;
+}
+
+int messageHandler::encryptSend (std::string message)
+{
+    string ciphertext = encrypt_message(message, pass);
+
+    int send = sendMessage (ciphertext);
+    if(send < 1)
+    {
+        std::cout << "Message Send error in \"encryptSend->sendMessage\"\n";
+        return -1;
+    }
+    return 1;
+}
 
 //****************************************************************************
 //  Sends a message: Checks if the class is a server or a client then sends
@@ -35,6 +80,7 @@ int messageHandler::sendMessage (std::string message)
     char buffer[bufsize];
     //Copy message to buffer.
     strcpy(buffer, message.c_str());
+    cout<<"BUFF"<<buffer;
 
     //This sends the message depending on if it's the server or client.
     if(isServer)//Server send message code
@@ -192,6 +238,10 @@ int messageHandler::clientSetup(std::string ipAddress)
     std::cout << "Init Recv: " << buffer;
     return 1;
 }
+
+
+
+
 
 
 

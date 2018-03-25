@@ -1,12 +1,17 @@
+#ifndef ENCRYPTION
+#define ENCRYPTION
+
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
 #include <openssl/des.h>
 #include <vector>
 
+
 using namespace std;
 
 std::string encrypt_message(std::string plaintext, const char *password) {
+
     int i = 0, n;                                                            //Loop variable Declaration
     DES_cblock key, output;                                                  //Stores DES Key And Output block
     DES_key_schedule schedule{};                                             //Scheduler for DES
@@ -31,6 +36,7 @@ std::string encrypt_message(std::string plaintext, const char *password) {
         ve.push_back('\0');                                                  //Push back null terminating char
     }                                                                        //END LOOP
     std::string str(ve.begin(), ve.end());                                   //Turn vector into string for sending
+
     return str;                                                              //Return Ciphertext
 }
 
@@ -62,18 +68,22 @@ std::string decrypt_message(std::string ciphertext, const char *password) {
     return str;
 }
 
-int test() {
-    //NOTE: Password Must Be 1-7 Characters for DES
-    const char *password = "pass";
-    string ciphertext = "";
-    string plaintext = "";
-    string message = "this is a test really long test";
-    std::cout << "MESSAGE: " + message << endl;
-    std::cout << "ENCRYPTING..." << endl;
-    ciphertext = encrypt_message(message, password);
-    std::cout << "SENDING MESSAGE SIMULATION" << endl;
-    std::cout << "DECRYPTING..." << endl;
-    plaintext = decrypt_message(ciphertext, password);
-    std::cout << "RESULTS: " + plaintext;
-    return 0;
-}
+//int test() {
+//    //NOTE: Password Must Be 1-7 Characters for DES
+//    const char *password = "pass";
+//    string ciphertext = "";
+//    string plaintext = "";
+//    string message = "this is a test really long test";
+//    std::cout << "MESSAGE: " + message << endl;
+//    std::cout << "ENCRYPTING..." << endl;
+//    ciphertext = encrypt_message(message, password);
+//    std::cout << "SENDING MESSAGE SIMULATION" << endl;
+//    std::cout << "DECRYPTING..." << endl;
+//    plaintext = decrypt_message(ciphertext, password);
+//    std::cout << "RESULTS: " + plaintext<<endl;
+//    std::cout << "CIPHER: " + ciphertext;
+//    std::cout<< "LEN" << ciphertext.size()*4;
+//    return 0;
+//}
+
+#endif //ENCRYPTION

@@ -1,11 +1,13 @@
 cmake_minimum_required(VERSION 3.9)
 project(Encrypted_p2p)
 
+
 set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES main.cpp
         messageHandler.cpp
-        messageHandler.h messageEncryption.h test2.h)
+        messageHandler.h messageEncryption.h)
+
 
 find_package(OpenSSL REQUIRED)
 if (OPENSSL_FOUND)

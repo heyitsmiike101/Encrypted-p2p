@@ -6,15 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/main.cpp
+/home/mike/Desktop/Encrypted-p2p/main.cpp
 iostream
 -
 messageHandler.h
-/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/messageHandler.h
-messageEncryption.h
-/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/messageEncryption.h
+/home/mike/Desktop/Encrypted-p2p/messageHandler.h
 
-/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/messageEncryption.h
+/home/mike/Desktop/Encrypted-p2p/messageEncryption.h
 cstdio
 -
 cstring
@@ -26,11 +24,13 @@ openssl/des.h
 vector
 -
 
-/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/messageHandler.cpp
+/home/mike/Desktop/Encrypted-p2p/messageHandler.cpp
 messageHandler.h
-/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/messageHandler.h
+/home/mike/Desktop/Encrypted-p2p/messageHandler.h
+messageEncryption.h
+/home/mike/Desktop/Encrypted-p2p/messageEncryption.h
 
-/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/messageHandler.h
+/home/mike/Desktop/Encrypted-p2p/messageHandler.h
 iostream
 -
 cstring
@@ -43,26 +43,12 @@ netinet/in.h
 -
 arpa/inet.h
 -
-stdlib.h
+cstdlib
 -
 unistd.h
 -
 netdb.h
 -
-
-/usr/local/include/openssl/des.h
-openssl/opensslconf.h
+vector
 -
-openssl/e_os2.h
--
-
-/usr/local/include/openssl/e_os2.h
-openssl/opensslconf.h
--
-inttypes.h
--
-stdint.h
--
-
-/usr/local/include/openssl/opensslconf.h
 
