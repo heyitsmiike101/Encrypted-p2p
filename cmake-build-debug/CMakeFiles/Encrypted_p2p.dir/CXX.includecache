@@ -11,8 +11,20 @@ iostream
 -
 messageHandler.h
 /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/messageHandler.h
-test.h
-/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/test.h
+messageEncryption.h
+/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/messageEncryption.h
+
+/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/messageEncryption.h
+cstdio
+-
+cstring
+-
+cstdlib
+-
+openssl/des.h
+-
+vector
+-
 
 /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/messageHandler.cpp
 messageHandler.h
@@ -36,16 +48,6 @@ stdlib.h
 unistd.h
 -
 netdb.h
--
-
-/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/test.h
-stdio.h
--
-string.h
--
-stdlib.h
--
-openssl/des.h
 -
 
 /usr/local/include/openssl/des.h
