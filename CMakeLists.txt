@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_FILES main.cpp
         messageHandler.cpp
-        messageHandler.h test.h)
+        messageHandler.h messageEncryption.h test2.h)
 
 find_package(OpenSSL REQUIRED)
 if (OPENSSL_FOUND)
