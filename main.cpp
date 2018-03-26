@@ -5,8 +5,6 @@
 using namespace std;
 
 int main() {
-    test();
-    return 0;
     messageHandler mailman;
     string answer, password;
     DES_cblock key, output;
@@ -37,28 +35,32 @@ int main() {
         cout << endl << "Send the first message: ";
         string message;
         getline(cin, message);
-        mailman.sendMessage(message);
+        string cipher = encrypt_message(message, "pass");
+        mailman.sendMessage(cipher);
     }
 
     cout << "\nTo Quit the chat type: QUIT\n";
     int i = 0;
     while (i < 6) {
-        string recv = mailman.receiveMessage();
-        if (recv == "QUIT") {
+        string recv = mailman.receiveMessage()+'\0'; //DON'T REMOVE
+        string plaintext= decrypt_message(recv, "pass");
+        if (recv == "QUIT") {//Never the case
             exit(1);
         }
         cout << "\nRecv: ";
-        cout << recv << endl;
+        cout << "cipher: " +recv << endl;
+        cout << "Plaintext: "+ plaintext << endl;
 
         cout << "\nSend: ";
         string send;
         getline(cin, send);
-        //cin.clear();
-        if (send == "QUIT") {
-            mailman.sendMessage(send);
+        string cipher = encrypt_message(send, "pass");
+        cout << "cipher: " +cipher << endl;
+        if (send == "QUIT") {//never be the case
+            mailman.sendMessage(cipher);
             exit(1);
         }
-        mailman.sendMessage(send);
+        mailman.sendMessage(cipher);
         i++;
 
     }

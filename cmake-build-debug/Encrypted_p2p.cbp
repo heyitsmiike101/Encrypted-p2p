@@ -94,9 +94,6 @@
 		<Unit filename="/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/messageHandler.h">
 			<Option target="Encrypted_p2p"/>
 		</Unit>
-		<Unit filename="/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/test2.h">
-			<Option target="Encrypted_p2p"/>
-		</Unit>
 		<Unit filename="/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
