@@ -11,7 +11,7 @@ int messageHandler::sendMessage (std::string message)
     char buffer[bufsize];
     //Copy message to buffer.
     strcpy(buffer, message.c_str());
-
+    std::cout<< buffer<<std::endl;
     //This sends the message depending on if it's the server or client.
     if(isServer)//Server send message code
     {

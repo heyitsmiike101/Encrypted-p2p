@@ -5,6 +5,7 @@
 using namespace std;
 
 int main() {
+
     messageHandler mailman;
     string answer, password;
     DES_cblock key, output;
