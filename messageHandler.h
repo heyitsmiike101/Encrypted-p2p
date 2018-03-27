@@ -14,7 +14,7 @@
 #ifndef CHAT_MESSAGEHANDLER_H
 #define CHAT_MESSAGEHANDLER_H
 
-#define bufsize 1024
+#define bufsize 7168
 #define PORT 1061
 #define NOT !
 
