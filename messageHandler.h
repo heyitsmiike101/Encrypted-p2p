@@ -15,10 +15,8 @@
 #define CHAT_MESSAGEHANDLER_H
 
 #define bufsize 7168
-#define PORT 1061
+#define PORT 1050
 #define NOT !
-
-//using namespace std;
 
 
 class messageHandler

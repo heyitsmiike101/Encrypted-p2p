@@ -11,7 +11,6 @@ int messageHandler::sendMessage (std::string message)
     char buffer[bufsize];
     //Copy message to buffer.
     strcpy(buffer, message.c_str());
-    std::cout<< buffer<<std::endl;
     //This sends the message depending on if it's the server or client.
     if(isServer)//Server send message code
     {
@@ -100,7 +99,7 @@ int messageHandler::serverSetup()
     if (server < 0)
         std::cout << " Error on accepting" << std::endl;
 
-    strcpy(buffer, "Server connected!\n*********************");
+    strcpy(buffer, "Server connected!\n*********************\n");
     std::cout<<"\nInit send: " << buffer;
     send(server, buffer, bufsize, 0);
     return 1;
