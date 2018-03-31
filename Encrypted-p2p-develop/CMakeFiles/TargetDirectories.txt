@@ -1,0 +1,3 @@
+/Users/navinr/CLionProjects/Encrypted-p2p-develop/CMakeFiles/rebuild_cache.dir
+/Users/navinr/CLionProjects/Encrypted-p2p-develop/CMakeFiles/edit_cache.dir
+/Users/navinr/CLionProjects/Encrypted-p2p-develop/CMakeFiles/Encrypted_p2p.dir
