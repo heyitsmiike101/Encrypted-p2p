@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /usr/local/include 
+CXX_INCLUDES = -isystem /usr/local/Cellar/openssl/1.0.2o/include 
 

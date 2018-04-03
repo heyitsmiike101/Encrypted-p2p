@@ -1,8 +1,14 @@
+//Encryption/Decryption
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
 #include <openssl/des.h>
 #include <vector>
+//Password hash
+#include <openssl/sha.h>
+#include <sstream>
+#include<iomanip>
+#define MAX_PASSWORD_LENGTH 7
 
 using namespace std;
 
@@ -63,6 +69,21 @@ std::string decrypt_message(std::string ciphertext, const char *password) {
     return str;
 }
 
+std::string passwordRegen(string &password){
+    unsigned char hash[SHA256_DIGEST_LENGTH];
+    SHA256_CTX sha256;
+    SHA256_Init(&sha256);
+    SHA256_Update(&sha256, password.c_str(), password.size());
+    SHA256_Final(hash, &sha256);
+    std::stringstream temp;
+    for(int i = 0; i < SHA256_DIGEST_LENGTH; i++)
+    {
+        temp << hex << setw(2) << setfill('0') << (int)hash[i];
+    }
+    cout<<"\nPassChange = "<<temp.str().substr(0, MAX_PASSWORD_LENGTH);
+    return temp.str().substr(0, MAX_PASSWORD_LENGTH);
+}
+
 int test() {
     //NOTE: Password Must Be 1-7 Characters for DES
     const char *password = "pass";
@@ -78,3 +99,5 @@ int test() {
     std::cout << "RESULTS: " + plaintext;
     return 0;
 }
+
+

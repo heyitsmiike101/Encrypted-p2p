@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/bin/cmake
+CMAKE_COMMAND = /Applications/CMake.app/Contents/bin/cmake
 
 # The command to remove a file.
-RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
+RM = /Applications/CMake.app/Contents/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p
+CMAKE_SOURCE_DIR = /Users/mike/Desktop/Encrypted-p2p
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/mike/Desktop/Encrypted-p2p/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Encrypted_p2p.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/Encrypted_p2p.dir/flags.make
 
 CMakeFiles/Encrypted_p2p.dir/main.cpp.o: CMakeFiles/Encrypted_p2p.dir/flags.make
 CMakeFiles/Encrypted_p2p.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Encrypted_p2p.dir/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Encrypted_p2p.dir/main.cpp.o -c /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mike/Desktop/Encrypted-p2p/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Encrypted_p2p.dir/main.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Encrypted_p2p.dir/main.cpp.o -c /Users/mike/Desktop/Encrypted-p2p/main.cpp
 
 CMakeFiles/Encrypted_p2p.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Encrypted_p2p.dir/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/main.cpp > CMakeFiles/Encrypted_p2p.dir/main.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mike/Desktop/Encrypted-p2p/main.cpp > CMakeFiles/Encrypted_p2p.dir/main.cpp.i
 
 CMakeFiles/Encrypted_p2p.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Encrypted_p2p.dir/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/main.cpp -o CMakeFiles/Encrypted_p2p.dir/main.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mike/Desktop/Encrypted-p2p/main.cpp -o CMakeFiles/Encrypted_p2p.dir/main.cpp.s
 
 CMakeFiles/Encrypted_p2p.dir/main.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/Encrypted_p2p.dir/main.cpp.o.provides.build: CMakeFiles/Encrypted_p2p
 
 CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.o: CMakeFiles/Encrypted_p2p.dir/flags.make
 CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.o: ../messageHandler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.o -c /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/messageHandler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/mike/Desktop/Encrypted-p2p/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.o -c /Users/mike/Desktop/Encrypted-p2p/messageHandler.cpp
 
 CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/messageHandler.cpp > CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mike/Desktop/Encrypted-p2p/messageHandler.cpp > CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.i
 
 CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/messageHandler.cpp -o CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mike/Desktop/Encrypted-p2p/messageHandler.cpp -o CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.s
 
 CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.o.requires:
 
@@ -116,9 +116,9 @@ Encrypted_p2p_EXTERNAL_OBJECTS =
 Encrypted_p2p: CMakeFiles/Encrypted_p2p.dir/main.cpp.o
 Encrypted_p2p: CMakeFiles/Encrypted_p2p.dir/messageHandler.cpp.o
 Encrypted_p2p: CMakeFiles/Encrypted_p2p.dir/build.make
-Encrypted_p2p: /usr/local/lib/libcrypto.dylib
+Encrypted_p2p: /usr/lib/libcrypto.dylib
 Encrypted_p2p: CMakeFiles/Encrypted_p2p.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Encrypted_p2p"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/mike/Desktop/Encrypted-p2p/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Encrypted_p2p"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Encrypted_p2p.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -136,6 +136,6 @@ CMakeFiles/Encrypted_p2p.dir/clean:
 .PHONY : CMakeFiles/Encrypted_p2p.dir/clean
 
 CMakeFiles/Encrypted_p2p.dir/depend:
-	cd /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/cmake-build-debug /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/cmake-build-debug /Users/andrew_nguyen/files/cs/cpp/Encrypted-p2p/cmake-build-debug/CMakeFiles/Encrypted_p2p.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/mike/Desktop/Encrypted-p2p/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/mike/Desktop/Encrypted-p2p /Users/mike/Desktop/Encrypted-p2p /Users/mike/Desktop/Encrypted-p2p/cmake-build-debug /Users/mike/Desktop/Encrypted-p2p/cmake-build-debug /Users/mike/Desktop/Encrypted-p2p/cmake-build-debug/CMakeFiles/Encrypted_p2p.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Encrypted_p2p.dir/depend
 
