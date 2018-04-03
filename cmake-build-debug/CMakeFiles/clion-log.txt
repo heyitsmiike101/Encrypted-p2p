@@ -1,5 +1,4 @@
 /Applications/CMake.app/Contents/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl/1.0.2o -DOPENSSL_LIBRARIES=/usr/local/Cellar/openssl/1.0.2o/lib -G "CodeBlocks - Unix Makefiles" /Users/mike/Desktop/Encrypted-p2p
--- Found OpenSSL: /usr/lib/libcrypto.dylib (found version "1.0.2o") 
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/mike/Desktop/Encrypted-p2p/cmake-build-debug
