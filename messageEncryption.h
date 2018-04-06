@@ -34,7 +34,7 @@ std::string encrypt_message(std::string plaintext, const char *password) {
         );
         res = {reinterpret_cast<char *>(output)};                            //Stores round result into string
         std::copy(res.begin(), res.end(), std::back_inserter(ve));           //Copy string to vector
-        ve.push_back('\s');                                                  //Push back null terminating char
+        //ve.push_back('\s');                                                  //Push back null terminating char
     }                                                                        //END LOOP
     ve.push_back('\0');
     std::string str(ve.begin(), ve.end());                                   //Turn vector into string for sending

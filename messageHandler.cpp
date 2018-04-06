@@ -119,11 +119,12 @@ int messageHandler::clientSetup(std::string ipAddress)
     char buffer[bufsize];
     isServer = false;
     portNum = PORT;
+    int retcode;
 
     //https://stackoverflow.com/questions/7352099/stdstring-to-char TODO maybe change this to a better way (may segfault)
     ip = new char[ipAddress.length() + 1];
-    strcpy(ip, ipAddress.c_str());
 
+    strcpy(ip, ipAddress.c_str());
 
     client = socket(AF_INET, SOCK_STREAM, 0);
     if (client < 0)
@@ -133,14 +134,17 @@ int messageHandler::clientSetup(std::string ipAddress)
     }
     std::cout << "Socket client created" << std::endl;
 
-    server_addr.sin_addr.s_addr = inet_addr(ip);
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(portNum);
+    server_addr.sin_addr.s_addr = inet_addr(ip);
 
-    if (connect(client,(struct sockaddr *)&server_addr, sizeof(server_addr)) < 0)
+
+    retcode = connect(client, (struct sockaddr *)&server_addr,
+                      sizeof(server_addr));
+    if (retcode < 0)
     {
-        std::cout << "Connection to the server FAILED " << portNum << std::endl;
-        return -1;
+        printf("*** ERROR - connect() failed \n");
+        exit(-1);
     }
     recv(client, buffer, bufsize, 0);
     std::cout << "Init Recv: " << buffer;

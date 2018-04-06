@@ -52,7 +52,8 @@ int main() {
         cout << "\n*********************\n";
         cout << "client selected";
         cout << "\n*********************\n";
-        int check = mailman.clientSetup("127.0.0.1");
+        int check = mailman.clientSetup("10.226.28.206");
+        //int check = mailman.clientSetup("127.0.0.1");
         if (check < 0)
         {
             exit(1);

@@ -17,7 +17,7 @@
 
 //Can be changed depending on requirements.
 #define bufsize 7168
-#define PORT 1052
+#define PORT 1053
 
 class messageHandler
 {
