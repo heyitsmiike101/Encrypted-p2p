@@ -20,7 +20,6 @@ using namespace std;
 
 int main() {
 
-
     messageHandler mailman {};
     string answer, tempPass;
     //Processes variables
@@ -52,8 +51,7 @@ int main() {
         cout << "\n*********************\n";
         cout << "client selected";
         cout << "\n*********************\n";
-        int check = mailman.clientSetup("10.226.28.206");
-        //int check = mailman.clientSetup("127.0.0.1");
+        int check = mailman.clientSetup("127.0.0.1");
         if (check < 0)
         {
             exit(1);
@@ -72,7 +70,7 @@ int main() {
         exit(0);
     }
     process->quit = false;
-    process->password = tempPass;
+    process->password = passwordRegen(tempPass);
 
 
     //Fork to keep receiving messages until send message returns -1

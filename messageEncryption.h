@@ -34,7 +34,7 @@ std::string encrypt_message(std::string plaintext, const char *password) {
         );
         res = {reinterpret_cast<char *>(output)};                            //Stores round result into string
         std::copy(res.begin(), res.end(), std::back_inserter(ve));           //Copy string to vector
-        //ve.push_back('\s');                                                  //Push back null terminating char
+        ve.push_back(' ');                                                  //Push back null terminating char
     }                                                                        //END LOOP
     ve.push_back('\0');
     std::string str(ve.begin(), ve.end());                                   //Turn vector into string for sending
@@ -86,10 +86,10 @@ std::string passwordRegen(string &password){
 
 int test() {
     //NOTE: Password Must Be 1-7 Characters for DES
-    const char *password = "pass";
+    const char *password = "123";
     string ciphertext = "";
     string plaintext = "";
-    string message = "this is a test really long test";
+    string message = "asdlf kjasd;f lkjasd;f lkjasdf";
     std::cout << "MESSAGE: " + message << endl;
     std::cout << "ENCRYPTING..." << endl;
     ciphertext = encrypt_message(message, password);

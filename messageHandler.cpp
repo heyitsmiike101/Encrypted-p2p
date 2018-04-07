@@ -9,16 +9,17 @@
 int messageHandler::sendMessage (std::string message)
 {
     char buffer[bufsize];
+
     //Copy message to buffer.
     strcpy(buffer, message.c_str());
     //This sends the message depending on if it's the server or client.
     if(isServer)//Server send message code
     {
-        send(server, buffer, bufsize, 0);
+        send(server, buffer, (strlen(buffer) + 1), 0);
     }
     else if(NOT isServer)//Client send message code
     {
-        send(client, buffer, bufsize, 0);
+        send(client, buffer, (strlen(buffer) + 1), 0);
     }
     else
     {
@@ -38,11 +39,11 @@ std::string messageHandler::receiveMessage ()
     //This sends the message depending on if it's the server or client.
     if(isServer)//Server send message code
     {
-        recv(server, buffer, bufsize, 0);
+        recv(server, buffer, sizeof(buffer), 0);
     }
     else if(NOT isServer)//Client send message code
     {
-        recv(client, buffer, bufsize, 0);
+        recv(client, buffer, sizeof(buffer), 0);
     }
     else
     {
@@ -81,8 +82,8 @@ int messageHandler::serverSetup()
     std::cout << "Socket server created\n";
 
     server_addr.sin_family = AF_INET;
-    server_addr.sin_addr.s_addr = htons(INADDR_ANY);
     server_addr.sin_port = htons(portNum);
+    server_addr.sin_addr.s_addr = htons(INADDR_ANY);
 
     if ((bind(client, (struct sockaddr*)&server_addr,sizeof(server_addr))) < 0)
     {
@@ -98,10 +99,6 @@ int messageHandler::serverSetup()
     server = accept(client,(struct sockaddr *)&server_addr,&size);
     if (server < 0)
         std::cout << " Error on accepting" << std::endl;
-
-    strcpy(buffer, "Server connected!\n*********************\n");
-    std::cout<<"\nInit send: " << buffer;
-    send(server, buffer, bufsize, 0);
     return 1;
 }
 
@@ -116,12 +113,11 @@ int messageHandler::serverSetup()
 //Sets up the client variables. Port can be changed from #define in .h
 int messageHandler::clientSetup(std::string ipAddress)
 {
-    char buffer[bufsize];
     isServer = false;
     portNum = PORT;
     int retcode;
 
-    //https://stackoverflow.com/questions/7352099/stdstring-to-char TODO maybe change this to a better way (may segfault)
+    //https://stackoverflow.com/questions/7352099/stdstring-to-char
     ip = new char[ipAddress.length() + 1];
 
     strcpy(ip, ipAddress.c_str());
@@ -138,7 +134,6 @@ int messageHandler::clientSetup(std::string ipAddress)
     server_addr.sin_port = htons(portNum);
     server_addr.sin_addr.s_addr = inet_addr(ip);
 
-
     retcode = connect(client, (struct sockaddr *)&server_addr,
                       sizeof(server_addr));
     if (retcode < 0)
@@ -146,8 +141,6 @@ int messageHandler::clientSetup(std::string ipAddress)
         printf("*** ERROR - connect() failed \n");
         exit(-1);
     }
-    recv(client, buffer, bufsize, 0);
-    std::cout << "Init Recv: " << buffer;
     return 1;
 }
 
