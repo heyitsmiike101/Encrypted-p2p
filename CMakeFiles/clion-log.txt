@@ -1,4 +1,4 @@
-/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/andrew_nguyen/Desktop/Encrypted-p2p-develop
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE= cmake -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl/1.0.2k -DOPENSSL_LIBRARIES=/usr/local/Cellar/openssl/1.0.2k/lib -G "CodeBlocks - Unix Makefiles" /Users/andrew_nguyen/Desktop/Encrypted-p2p
 -- The C compiler identification is AppleClang 9.0.0.9000039
 -- The CXX compiler identification is AppleClang 9.0.0.9000039
 -- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
@@ -16,4 +16,4 @@
 -- Found OpenSSL: /usr/local/lib/libcrypto.dylib (found version "1.1.1") 
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/andrew_nguyen/Desktop/Encrypted-p2p-develop
+-- Build files have been written to: /Users/andrew_nguyen/Desktop/Encrypted-p2p

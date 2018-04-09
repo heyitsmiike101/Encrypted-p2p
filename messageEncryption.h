@@ -8,6 +8,7 @@
 #include <openssl/sha.h>
 #include <sstream>
 #include<iomanip>
+
 #define MAX_PASSWORD_LENGTH 7
 
 using namespace std;
@@ -69,19 +70,45 @@ std::string decrypt_message(std::string ciphertext, const char *password) {
     return str;
 }
 
-std::string passwordRegen(string &password){
+std::string desPassFix(std::string pass) {
+    for (char &pas : pass) {
+        if (pas == '0' || pas == '9') {
+            pas = 'a';
+            continue;
+        }
+        if (pas == '1' || pas == '8') {
+            pas = 'b';
+            continue;
+        }
+        if (pas == '2' || pas == '7') {
+            pas = 'c';
+            continue;
+        }
+        if (pas == '3' || pas == '6') {
+            pas = 'd';
+            continue;
+        }
+        if (pas == '4' || pas == '5') {
+            pas = 'e';
+            continue;
+        }
+    }
+    return pass;
+}
+
+std::string passwordRegen(string &password) {
     unsigned char hash[SHA256_DIGEST_LENGTH];
     SHA256_CTX sha256;
     SHA256_Init(&sha256);
     SHA256_Update(&sha256, password.c_str(), password.size());
     SHA256_Final(hash, &sha256);
     std::stringstream temp;
-    for(int i = 0; i < SHA256_DIGEST_LENGTH; i++)
-    {
-        temp << hex << setw(2) << setfill('0') << (int)hash[i];
+    for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
+        temp << hex << setw(2) << setfill('0') << (int) hash[i];
     }
-    cout<<"\nPassChange = "<<temp.str().substr(0, MAX_PASSWORD_LENGTH);
-    return temp.str().substr(0, MAX_PASSWORD_LENGTH);
+    cout << "\nPassChange = " << temp.str().substr(0, MAX_PASSWORD_LENGTH);
+    string t = temp.str().substr(0, MAX_PASSWORD_LENGTH);
+    return desPassFix(t);
 }
 
 int test() {

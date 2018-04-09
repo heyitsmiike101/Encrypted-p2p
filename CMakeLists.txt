@@ -1,5 +1,5 @@
 #type this command in for fix openssl problem
-#cmake -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl/1.0.2o -DOPENSSL_LIBRARIES=/usr/local/Cellar/openssl/1.0.2o/lib
+#cmake -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl/1.0.2k -DOPENSSL_LIBRARIES=/usr/local/Cellar/openssl/1.0.2k/lib
 
 
 cmake_minimum_required(VERSION 3.9)

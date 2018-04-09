@@ -17,15 +17,15 @@
 
 //Can be changed depending on requirements.
 #define bufsize 7168
-#define PORT 1053
+#define PORT 1056
 
 
 class messageHandler
 {
 public:
     //Setup: 1 Required.
-    int serverSetup();
-    int clientSetup(std::string ipAddress);
+    int serverSetup(int t);
+    int clientSetup(std::string ipAddress,int timeout);
     //Messaging
     int sendMessage(std::string message);
     std::string receiveMessage();
