@@ -63,19 +63,20 @@ std::string messageHandler::receiveMessage() {
 //Sets up the server variables. Port can be changed from define in .h
 int messageHandler::serverSetup(int t) {
     struct timeval timeout;
-    timeout.tv_usec = t * 100000;
+    timeout.tv_sec = t;
+    timeout.tv_usec = 0;
 
     char buffer[bufsize];
     isServer = true;
     portNum = PORT;
 
     client = socket(AF_INET, SOCK_STREAM, 0);
-    setsockopt(client, SOL_SOCKET, SO_RCVTIMEO, (char *) &timeout, sizeof(timeout));
 
     if (client < 0) {
         std::cout << "\nError establishing socket" << std::endl;
         return -1;
     }
+    setsockopt(client, SOL_SOCKET, SO_RCVTIMEO, (char *) &timeout, sizeof(timeout));
     std::cout << "Socket server created\n";
 
     server_addr.sin_family = AF_INET;
@@ -116,11 +117,11 @@ int messageHandler::serverSetup(int t) {
 //Sets up the client variables. Port can be changed from #define in .h
 int messageHandler::clientSetup(std::string ipAddress, int t) {
     struct timeval timeout;
-    timeout.tv_usec = t * 100000;
+    timeout.tv_sec = t;
+    timeout.tv_usec = 0;
     isServer = false;
     portNum = PORT;
     int retcode = -1;
-
     //https://stackoverflow.com/questions/7352099/stdstring-to-char
     ip = new char[ipAddress.length() + 1];
 
@@ -132,7 +133,9 @@ int messageHandler::clientSetup(std::string ipAddress, int t) {
         return -1;
     }
     std::cout << "Socket client created" << std::endl;
-
+    if(setsockopt(client, SOL_SOCKET, SO_RCVTIMEO, (char *) &timeout, sizeof(timeout))<0){
+        perror("SO_RCVTIMEO");
+    };
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(portNum);
     server_addr.sin_addr.s_addr = inet_addr(ip);
@@ -144,10 +147,6 @@ int messageHandler::clientSetup(std::string ipAddress, int t) {
     if (iResult > 0) {
         retcode = connect(client, (struct sockaddr *) &server_addr,
                           sizeof(server_addr));
-    }
-    if (retcode < 0) {
-        close(client);
-        close(retcode);
     }
     return retcode;
 }

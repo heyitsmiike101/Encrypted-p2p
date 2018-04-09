@@ -13,9 +13,9 @@ typedef struct {
     // shared because of process properties.
 } shared_mem;
 
-void send(messageHandler *mailman, string &password, shared_mem *process);
+void send(messageHandler &mailman, string &password, shared_mem *process);
 
-std::string recv(messageHandler *mailman, string &password, shared_mem *process);
+std::string recv(messageHandler &mailman, string &password, shared_mem *process);
 
 using namespace std;
 
@@ -35,14 +35,14 @@ int main() {
     getline(cin, tempPass);
     int result = -1;
     int sc, timeout;
+    messageHandler mailman{};
     while (result < 0) {
-        pointer = new messageHandler;
         sc = rand() % 2;                // sc in the range 0 and 1
-        timeout = rand() % 10000000 + 1;     // sc in the range 0 and 1
+        timeout = 1;     // sc in the range 0 and 1
         if (sc == 0) {
-            result = pointer->serverSetup(timeout);
+            result = mailman.serverSetup(timeout);
         } else {
-            result = pointer->clientSetup("127.0.0.1", timeout);
+            result = mailman.clientSetup("172.16.1.187", timeout);
         }
     }
 
@@ -63,12 +63,12 @@ int main() {
     pid1 = fork();
     if (pid1 == 0) {
         while (!process->quit) {
-            recv(pointer, process->password, process);
+            recv(mailman, process->password, process);
         }
         exit(0);
     } else {
         while (!process->quit) {
-            send(pointer, process->password, process);
+            send(mailman, process->password, process);
         }
     }
 
@@ -79,21 +79,21 @@ int main() {
     return 0;
 }
 
-void send(messageHandler *mailman, string &password, shared_mem *process) {
+void send(messageHandler &mailman, string &password, shared_mem *process) {
     string message;
     getline(cin, message);
 
     string cipher = encrypt_message(message, password.c_str());
-    mailman->sendMessage(cipher);
+    mailman.sendMessage(cipher);
 
     if (message == "QUIT") {
         exit(1);
     }
 }
 
-std::string recv(messageHandler *mailman, string &password, shared_mem *process) {
+std::string recv(messageHandler &mailman, string &password, shared_mem *process) {
     //Receive and decrypt
-    string recv = mailman->receiveMessage() + '\0'; //DON'T REMOVE
+    string recv = mailman.receiveMessage() + '\0'; //DON'T REMOVE
     string plaintext = decrypt_message(recv, password.c_str());
 
     //If sender quit, receiver will quit as well.
